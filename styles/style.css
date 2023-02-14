@@ -28,48 +28,29 @@ body {
     padding: 5px;
 }
 
-.container-numbers-part1 ol li{
-    display: inline-block;
-    border: 2px solid rgb(17, 0, 0);
-    margin: 5px;
-    padding: 20px;
-    border-radius: 50px;
-    font-size: 2em;
-    font-weight: 800;
-    background-color: rgb(247, 214, 255);
-    font-family: var(--font-numbers);
-}
 
 .container-numbers-part1 {
     text-align: center;
-}
-
-.container-numbers-part2 ol li{
-    display: inline-block;
-    border: 2px solid rgb(17, 0, 0);
-    margin: 5px;
-    padding: 20px;
-    border-radius: 50px;
-    font-size: 2em;
-    font-weight: 800;
-    background-color: rgb(247, 214, 255);
-    font-family: var(--font-numbers);
 }
 
 .container-numbers-part2 {
     text-align: center;
 }
 
-.container-numbers-part3 ol li{
+.number {
     display: inline-block;
     border: 2px solid rgb(17, 0, 0);
-    margin: 5px;
-    padding: var(--paddin);
+    margin: 3px;
+    /* padding: var(--paddin); */
     border-radius: 50px;
     font-size: 2em;
     font-weight: 800;
+    width: 70px;
+    height: 70px;
     background-color: rgb(247, 214, 255);
     font-family: var(--font-numbers);
+    text-align: center;
+    line-height: 75px;
 }
 
 .container-numbers-part3 {
@@ -82,15 +63,33 @@ body {
 }
 
 .container-content-numbers-person ol li{
-    display: none;
+    display: inline-block;
+    border: 4px solid rgb(0, 0, 0);
+    border-radius: 50px;
+    font-size: 2.5em;
+    font-weight: 700;
+    /* background-color: rgb(180, 85, 204); */
+    background-color: #9a84a5;
+    color: aliceblue;
+
+}
+
+.number-person {
+    display: inline-block;
     border: 2px solid rgb(17, 0, 0);
-    margin: 5px;
-    padding: 8px;
+    margin: 3px;
+    /* padding: var(--paddin); */
     border-radius: 50px;
     font-size: 2em;
-    font-weight: 500;
-    background-color: rgb(255, 255, 255);
+    font-weight: 800;
+    width: 70px;
+    height: 70px;
+    background-color: rgb(247, 214, 255);
+    font-family: var(--font-numbers);
+    text-align: center;
+    line-height: 75px;
 }
+
 
 .container-content-select-number {
     display: inline-block;
@@ -152,7 +151,13 @@ body {
     font-size: 1.2em;
     background-color: rgb(242, 188, 245);
     text-align: center;
+    margin-bottom: 2px;
     border: 1px solid black;
+}
+
+.container-social-networks p {
+    margin-bottom: 10px;
+    font-size: 1.2em;
 }
 
 .container-social-networks-list ol li {
@@ -166,3 +171,9 @@ body {
     width: 24px;
 }
 
+.textValueBet {
+    display: block;
+    text-align: center;
+    font-size: 2.5em;
+    margin: 10px 0;
+}
