@@ -1,5 +1,6 @@
 const numberPerson = []
 let valueBet = 0;
+let valueRandowBet = [];
 
 const btnNumbers = document.querySelector('.container-number');
 btnNumbers.addEventListener('click', (el)=>{
@@ -13,8 +14,27 @@ btnNumbers.addEventListener('click', (el)=>{
 
 const btnRevelation = document.querySelector('.btnRevelation');
 btnRevelation.addEventListener('click',()=>{
-    if(numberPerson.length<5 ){
-        alert(`Falta escolher ${5-numberPerson.length}`)
+    if(numberPerson.length<5){
+        alert(`Falta escolher ${5-numberPerson.length}`);
+    } else if(valueBet===0){
+        alert(`Adiciona o valor da aposta`);
+    } else {
+        generatorRandowNumber();
+        const profit = checkBet();
+        createElementsList();
+        const span = document.querySelector('.textValueBet');
+        if(profit<3){
+            span.innerHTML = `Voce perdeu R$${valueBet.toFixed(2)}`;
+        } else if(profit===3){
+            const won = valueBet*0.25;
+            span.innerHTML = `Voce ganhou R$${won.toFixed(2)}`;
+        } else if(profit===4){
+            const won = valueBet*0.50;
+            span.innerHTML = `Voce ganhou R$${won.toFixed(2)}`;
+        } else if(profit===5){
+            const won = valueBet;
+            span.innerHTML = `Voce ganhou R$${won.toFixed(2)}`;
+        }
     }
 })
 
@@ -36,15 +56,32 @@ function addNumberCreate(elemento){
 }
 
 
-function test(){
+function createElementsList(){
     const list = document.querySelector('.container-content-numbers-person-list');
-    const listaNumero = document.createElement('li');
-    listaNumero.setAttribute('class', 'number-person');
-    listaNumero.innerText = `${number}`;
-    list.appendChild(listaNumero);
+    for(let element of valueRandowBet){
+        const listaNumero = document.createElement('li');
+        listaNumero.setAttribute('class', 'number-person');
+        listaNumero.innerText = `${element}`;
+        list.appendChild(listaNumero);
+    }
+}
+
+function generatorRandowNumber(){
+    valueRandowBet = [];
+    for(let counter=0; counter<5; counter++){
+        let numberRandow = Math.ceil(((Math.random()*30)+1));
+        valueRandowBet.push(numberRandow);
+    }
     
 }
 
-function randowNumber(){
-
+function checkBet(){
+    let profit = 0;
+    for(let elementOfBet of numberPerson){
+        if(valueRandowBet.includes(elementOfBet)){
+            profit++
+        }
+    }
+    return profit;
 }
+
