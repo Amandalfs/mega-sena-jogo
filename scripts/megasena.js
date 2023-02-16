@@ -14,11 +14,15 @@ btnNumbers.addEventListener('click', (el)=>{
 
 const btnRevelation = document.querySelector('.btnRevelation');
 btnRevelation.addEventListener('click',()=>{
+    const txtValue = document.querySelector('.numberValue');
+    const list = document.querySelector('.container-content-numbers-person-list');
     if(numberPerson.length<5){
         alert(`Falta escolher ${5-numberPerson.length}`);
     } else if(valueBet===0){
         alert(`Adiciona o valor da aposta`);
-    } else {
+    } else if(numberPerson.length===5 &&  txtValue.value!=="exist" && list.value!=='exist') {
+        
+
         generatorRandowNumber();
         const profit = checkBet();
         createElementsList();
@@ -35,18 +39,24 @@ btnRevelation.addEventListener('click',()=>{
             const won = valueBet;
             span.innerHTML = `Voce ganhou R$${won.toFixed(2)}`;
         }
+        txtValue.value = 'exist';
+        list.value = 'exist';
     }
 })
 
 const btnAddValueBet = document.querySelector('.addValueBet');
 btnAddValueBet.addEventListener('click', ()=>{
     const txtValue = Number(document.querySelector('.numberValue').value);
-    if(txtValue>=1){
-        const textSpan = document.querySelector('.textValueBet');
+    const txt = document.querySelector('.numberValue');
+    const list = document.querySelector('.container-content-numbers-person-list');
+    const textSpan = document.querySelector('.textValueBet');
+    if(txtValue>=1 && txt.value!=='exist' && list.value!=='exist'){
         valueBet += txtValue;
         textSpan.innerHTML = `Valor: R$${valueBet.toFixed(2)}`;
-    } else {
+    } else if(txtValue<1){
         alert('Adicione Dinheiro mao de vaca');
+    } else {
+        textSpan.innerHTML = `Valor: R$${valueBet.toFixed(2)}`;
     }
 })
 
@@ -58,6 +68,7 @@ function addNumberCreate(elemento){
 
 function createElementsList(){
     const list = document.querySelector('.container-content-numbers-person-list');
+    list.innerHTML = '';
     for(let element of valueRandowBet){
         const listaNumero = document.createElement('li');
         listaNumero.setAttribute('class', 'number-person');
@@ -65,14 +76,24 @@ function createElementsList(){
         list.appendChild(listaNumero);
     }
 }
-
+//valueRandowBet.push(numberRandow);
+//let numberRandow = Math.ceil(((Math.random()*30)+1));
 function generatorRandowNumber(){
     valueRandowBet = [];
     for(let counter=0; counter<5; counter++){
-        let numberRandow = Math.ceil(((Math.random()*30)+1));
-        valueRandowBet.push(numberRandow);
+        let c = 0;
+        while(c<1){     
+            let numberRandow = Math.ceil(((Math.random()*30)+1));
+            if(!valueRandowBet.includes(numberRandow)){
+                if(numberRandow>=1 && numberRandow<=9){
+                    valueRandowBet.push(`0${numberRandow}`);
+                } else {
+                    valueRandowBet.push(String(numberRandow));
+                }
+                c++
+            }
+        }
     }
-    
 }
 
 function checkBet(){
