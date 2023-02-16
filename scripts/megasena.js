@@ -41,7 +41,25 @@ btnRevelation.addEventListener('click',()=>{
         }
         txtValue.value = 'exist';
         list.value = 'exist';
+    } else {
+        alert('clique no botao reset para comecar de novo');
     }
+})
+
+const btnReset = document.querySelector('#reset');
+btnReset.addEventListener('click', ()=>{
+    const listRevelation = document.querySelector('.container-content-numbers-person-list');
+    listRevelation.style.display = 'none';
+    listRevelation.value = '';
+    const textSpan = document.querySelector('.textValueBet');
+    textSpan.innerHTML = '';
+    textSpan.style.display = 'none';
+    textSpan.value = '';
+    const btnSolo = document.querySelectorAll('.number');
+    for(let elemento of btnSolo){
+        elemento.style.backgroundColor = 'rgb(245, 207, 247)';
+    }
+    console.log(btnSolo);
 })
 
 const btnAddValueBet = document.querySelector('.addValueBet');
@@ -56,7 +74,7 @@ btnAddValueBet.addEventListener('click', ()=>{
     } else if(txtValue<1){
         alert('Adicione Dinheiro mao de vaca');
     } else {
-        textSpan.innerHTML = `Valor: R$${valueBet.toFixed(2)}`;
+        alert('Clique no botao reset para apostar de novo')
     }
 })
 
